@@ -1,0 +1,64 @@
+// .form-signin {
+//   position:absolute;
+//   top: 50%;
+//   left: 50%;
+//   -ms-transform: translateX(-50%) translateY(-50%);
+//   -webkit-transform: translate(-50%, -50%);
+//   transform: translate(-50%, -50%);
+// }
+
+input::-webkit-input-placeholder {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.form-signin input[type="email"] {
+  border: 1px solid #4b5563;
+  background-color: #374151;
+  color: #fff;
+  font-size: 14px;
+}
+
+.form-signin input[type="password"] {
+  border: 1px solid #4b5563;
+  background-color: #374151;
+  color: #fff;
+  font-size: 14px;
+}
+
+.h-img {
+  width: 35%;
+  text-align: center;
+}
+
+.big-b{
+  font-size: 16px;
+}
+.big-b:hover{
+  background-color: #22e2af;
+}
+
+.h-box {
+  height: 465px;
+  width: 465px;
+  box-shadow: #ffffff1f 0px 2px 4px 0px, #ffffff52 0px 0px 5px 0px;
+  border-radius: 10px;
+  background: #1f2937;
+}
+
+.fw-normal {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.under-txt {
+  font-size: 14px;
+  button {
+    color: #19d0c5;
+    font-size: 14px;
+    border: 0;
+  }
+  button:hover{
+    color: #22e2af;
+  }
+}

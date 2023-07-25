@@ -1,0 +1,36 @@
+// imports
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700;800;900;1000&display=swap");
+// ***************************************************************
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  font-family: Nunito Sans, ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+}
+
+.form-control:focus {
+  border-color: #4b5563 !important;
+  outline: 0;
+  box-shadow: none !important;
+}
+
+body {
+  background: #111827;
+}
+// colors
+.bg-700 {
+  background: #22e2af;
+}
+.bg-600 {
+  background: #19d0c5;
+}
+.big-b:hover{
+  background-color: #22e2af;
+}

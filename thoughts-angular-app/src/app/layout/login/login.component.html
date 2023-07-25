@@ -1,0 +1,49 @@
+<div class="container justify-content-center d-flex">
+  <div class="row align-items-center">
+    <!-- <div class="col-2"></div> -->
+    <div class="col-12 p-5 mt-1 form-signin mx-auto">
+      <!-- form -->
+      <form [formGroup]="signinForm" (ngSubmit)="loginUser()">
+        <div class="d-flex">
+          <!-- image -->
+          <!-- <img class="mb-4 justify-content-center h-img mx-auto" src="../assets/logo11.png" alt="" /> -->
+        </div>
+        <!-- box -->
+        <div class="h-box p-4 mx-auto">
+          <h1 class="h3 mb-3 fw-normal text-center text-white">
+            Login and unlock a world of possibilities!
+          </h1>
+          <!-- login -->
+          <div class="flex-column">
+            <!-- email -->
+            <div class="mb-3">
+              <label class="form-label text-white">Email</label>
+              <input type="email" class="form-control" id="floatingInput" formControlName="email"
+                placeholder="Enter Email" />
+            </div>
+            <!-- password -->
+            <div class="mb-3">
+              <label class="form-label text-white">Password</label>
+              <input type="password" class="form-control" id="floatingPassword" formControlName="password"
+                placeholder="Enter Password" />
+            </div>
+            <!-- button -->
+            <div class="pt-3">
+              <button class="w-100 btn btn-lg bg-600 text-white big-b" type="submit">
+                Sign in
+              </button>
+            </div>
+
+            <!-- other -->
+            <div class=" pt-3 row">
+              <p class="mb-0 mt-4 under-txt text-white">Don’t have an account yet?
+                <button type="button" class="btn pb-1 p-0">SignUp</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- <div class="col-2"></div> -->
+  </div>
+</div>

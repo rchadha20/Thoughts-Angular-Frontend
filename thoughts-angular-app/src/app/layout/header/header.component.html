@@ -1,0 +1,36 @@
+<header class="sticky-top p-3 text-white h-header">
+  <div class="container-fluid">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start mx-5">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none ">
+        <img class="bi me-4" src="../assets/logo11.png" alt="" width="150" height="32" role="img" />
+      </a>
+
+      <ul class="nav col-12 col-lg-auto mx-lg-auto mb-2 justify-content-center mb-md-0">
+        <li>
+          <a [routerLink]="['/dashboard/home']" routerLinkActive="router-link-active"
+            *ngIf="this.authService.isLoggedIn" class="nav-link px-2 text-secondary">Home</a>
+        </li>
+        <li>
+          <a [routerLink]="['/dashboard/profile']" routerLinkActive="router-link-active"
+            *ngIf="this.authService.isLoggedIn" class="nav-link px-2 text-white">Profile</a>
+        </li>
+        <li>
+          <a [routerLink]="['/dashboard/write']" routerLinkActive="router-link-active"
+            *ngIf="this.authService.isLoggedIn" class="nav-link px-2 text-white">Write</a>
+        </li>
+      </ul>
+
+      <div class="text-end">
+        <button type="button" class="btn text-white me-3" *ngIf="!this.authService.isLoggedIn" (click)="login()">
+          Login
+        </button>
+        <button type="button" class="btn btn-outline-light me-2" *ngIf="this.authService.isLoggedIn" (click)="logout()">
+          Logout
+        </button>
+        <button type="button" class="btn bg-600 text-white big-b" *ngIf="!this.authService.isLoggedIn" (click)="signup()">
+          Get started
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
