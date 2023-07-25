@@ -1,47 +1,59 @@
-<div class="container d-flex justify-content-center px-5 pt-4 mb-5">
+<div class="container d-flex justify-content-center px-3 pt-3 mb-5">
   <div class="row align-items-center">
     <div class="col-12  mx-auto">
       <!-- form -->
-      <form>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <!-- <div class="d-flex">
           <img class="mb-4 justify-content-center h-img mx-auto" src="../assets/logo11.png" alt="" />
         </div> -->
         <!-- box -->
-        <div class="h-box p-4 mx-auto">
-          <h1 class="h3 mb-3 fw-normal text-center text-white">
+        <div class="h-box p-3 mx-auto">
+          <h1 class="h3 mb-2 fw-normal text-center text-white">
             Create an account and elevate your experience!
           </h1>
           <!-- login -->
           <div class="flex-column">
             <!-- email -->
-            <div class="mb-3">
+            <div class="mb-2">
               <label class="form-label text-white">Email</label>
-              <input type="email" class="form-control" id="floatingInput" formControlName="email"
-                placeholder="Enter Email" />
+              <input type="email" class="form-control" id="floatingInput" formControlName="email" placeholder="Enter Email" />
+              <!-- Display error message for email -->
+              <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="text-danger">
+                Please enter a valid email.
+              </div>
             </div>
             <!-- password -->
-            <div class="mb-3">
+            <div class="mb-2">
               <label class="form-label text-white">Password</label>
-              <input type="password" class="form-control" id="floatingPassword" formControlName="password"
-                placeholder="Enter Password" />
+              <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="Enter Password" />
+              <!-- Display error message for password -->
+              <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="text-danger">
+                Password is required.
+              </div>
             </div>
             <!-- re-password -->
-            <div class="mb-3">
+            <div class="mb-2">
               <label class="form-label text-white">Confirm Password</label>
-              <input type="password" class="form-control" id="floatingPassword" formControlName="password"
-                placeholder="Enter Confirm Password" />
+              <input type="password" class="form-control" id="floatingConfirmPassword" formControlName="confirmPassword" placeholder="Enter Confirm Password" />
+              <!-- Display error message for confirmPassword -->
+              <div *ngIf="registerForm.controls['confirmPassword'].invalid && registerForm.controls['confirmPassword'].touched" class="text-danger">
+               Confirm Password is required
+              </div>
+              <div *ngIf="registerForm.hasError('passwordMismatch')" class="text-danger">
+                Passwords do not match.
+              </div>
             </div>
             <!-- button -->
-            <div class="pt-3">
+            <div class="pt-1">
               <button class="w-100 btn btn-lg bg-600 text-white big-b" type="submit">
                 Sign Up
               </button>
             </div>
 
             <!-- other -->
-            <div class=" pt-3 row">
+            <div class="pt-1 row">
               <p class="mb-0 mt-2 under-txt text-white">Already have an account yet?
-                <button type="button" class="btn pb-1 p-0">Log In</button>
+                <button type="button" (click)="navigate()" class="btn pb-1 p-0">Log In</button>
               </p>
             </div>
           </div>
