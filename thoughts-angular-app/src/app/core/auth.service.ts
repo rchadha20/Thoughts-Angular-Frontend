@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { Blogs } from './blogs';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
@@ -29,7 +30,7 @@ export class AuthService {
         localStorage.setItem('access_token', res.token);
         this.getUserProfile(res._id).subscribe((res) => {
           this.currentUser = res;
-          console.log(this.currentUser)
+          console.log(this.currentUser);
           this.router.navigate(['dashboard']);
         });
       });
@@ -57,6 +58,13 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+
+  //All BLogs API call
+  getBlogs(): Observable<Blogs[]> {
+    let api = `${this.endpoint}/blogs-all-user`;
+    return this.http.get<Blogs[]>(api, { headers: this.headers });
+  }
+
   // Error
   handleError(error: HttpErrorResponse) {
     let msg = '';
