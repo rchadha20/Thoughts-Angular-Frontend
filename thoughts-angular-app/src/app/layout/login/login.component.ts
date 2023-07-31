@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 
@@ -16,12 +16,20 @@ export class LoginComponent {
     public router: Router
   ) {
     this.signinForm = this.fb.group({
-      email: [''],
-      password: [''],
+      "email": new FormControl('', [Validators.required, Validators.email]),
+      "password": new FormControl('', [Validators.required]),
     });
   }
   ngOnInit() {}
-  loginUser() {
-    this.authService.signIn(this.signinForm.value);
+  loginUser(){
+    if (this.signinForm.valid) {
+      this.authService.signIn(this.signinForm.value);
+  } else {
+    // Mark all form controls as touched
+    Object.values(this.signinForm.controls).forEach(control => control.markAsTouched());
+  }
+  }
+  navigate(){
+    this.router.navigate(['register'])
   }
 }

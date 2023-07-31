@@ -11,6 +11,15 @@
 //   width: 100vw;
 // }
 
+input.ng-invalid.ng-touched {
+  border: red 2px solid;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: red;
+}
+
 input::-webkit-input-placeholder {
   color: #9ca3af;
   font-size: 14px;

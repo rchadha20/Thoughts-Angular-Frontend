@@ -20,24 +20,30 @@
               <label class="form-label text-white">Email</label>
               <input type="email" class="form-control" id="floatingInput" formControlName="email"
                 placeholder="Enter Email" />
+                <div *ngIf=" signinForm.get('email')?.invalid && signinForm.get('email')?.touched  " class="text-danger">
+                  Email is required
+                  </div>
             </div>
             <!-- password -->
             <div class="mb-3">
               <label class="form-label text-white">Password</label>
               <input type="password" class="form-control" id="floatingPassword" formControlName="password"
                 placeholder="Enter Password" />
+                <div *ngIf=" signinForm.get('password')?.invalid && signinForm.get('password')?.touched " class="text-danger">
+                  Password is required
+                  </div>
             </div>
             <!-- button -->
-            <div class="pt-3">
+            <div class="pt-2">
               <button class="w-100 btn btn-lg bg-600 text-white big-b" type="submit">
                 Sign in
               </button>
             </div>
 
             <!-- other -->
-            <div class=" pt-3 row">
+            <div class=" pt-1 row">
               <p class="mb-0 mt-4 under-txt text-white">Don’t have an account yet?
-                <button type="button" class="btn pb-1 p-0">SignUp</button>
+                <button type="button" class="btn pb-1 p-0"  (click)="navigate()">SignUp</button>
               </p>
             </div>
           </div>
