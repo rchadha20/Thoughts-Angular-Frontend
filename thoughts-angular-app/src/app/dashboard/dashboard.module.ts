@@ -8,6 +8,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { WriteComponent } from './write/write.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import { BlogsComponent } from './blogs/blogs.component';
+import { SingleBlogPostComponent } from './single-blog-post/single-blog-post.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { RouterModule } from '@angular/router';
     DashboardComponent,
     ProfileComponent,
     WriteComponent,
-    HomeComponent
+    HomeComponent,
+    BlogsComponent,
+    SingleBlogPostComponent
   ],
   imports: [
     CommonModule,

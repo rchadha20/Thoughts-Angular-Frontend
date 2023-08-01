@@ -1,0 +1,42 @@
+<div *ngIf="blog.length > 0">
+  <main
+    class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 dark:text-white min-h-screen"
+  >
+    <div class="flex justify-between px-4">
+      <article class="mx-auto w-full max-w-2xl">
+        <header class="mb-4 lg:mb-6">
+          <address class="flex items-center mb-6 not-italic">
+            <div
+              class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"
+            >
+              <img class="w-10 mr-5 img-style" src="assets/woman.png" alt="" />
+              <div>
+                {{ blog[0].author }}
+                <p class="">
+                  <span
+                    class="bg-primary-100 text-primary-800 text-xs font-medium items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800"
+                  >
+                    {{ blog[0].category }}
+                  </span>
+                </p>
+                <p
+                  class="text-base font-light text-gray-500 dark:text-gray-400"
+                ></p>
+              </div>
+            </div>
+          </address>
+          <h1
+            class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+          >
+            {{ blog[0].title }}
+          </h1>
+        </header>
+        <p class="lead">{{ blog[0].content }}</p>
+      </article>
+    </div>
+  </main>
+</div>
+
+<div *ngIf="blog.length === 0">
+  <p class="text-white">No blog posts found.</p>
+</div>

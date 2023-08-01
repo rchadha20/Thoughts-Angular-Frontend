@@ -30,23 +30,23 @@ export class AuthService {
         });
       });
   }
-    // Sign-up
-    signUp(signupObject:any) {
-      const body={
-        email:signupObject.email,
-        password:signupObject.password
-      }
-      return this.http
-        .post<any>(`${this.endpoint}/signup`, body)
-        .subscribe((res: any) => {
-          localStorage.setItem('access_token', res.token);
-          this.getUserProfile(res._id).subscribe((res) => {
-            this.currentUser = res;
-            console.log(this.currentUser)
-            this.router.navigate(['dashboard/profile']);
-          });
+  // Sign-up
+  signUp(signupObject: any) {
+    const body = {
+      email: signupObject.email,
+      password: signupObject.password,
+    };
+    return this.http
+      .post<any>(`${this.endpoint}/signup`, body)
+      .subscribe((res: any) => {
+        localStorage.setItem('access_token', res.token);
+        this.getUserProfile(res._id).subscribe((res) => {
+          this.currentUser = res;
+          console.log(this.currentUser);
+          this.router.navigate(['dashboard/profile']);
         });
-    }
+      });
+  }
   getToken() {
     return localStorage.getItem('access_token');
   }
@@ -74,6 +74,12 @@ export class AuthService {
   //All BLogs API call
   getBlogs(): Observable<Blogs[]> {
     let api = `${this.endpoint}/blogs-all-user`;
+    return this.http.get<Blogs[]>(api, { headers: this.headers });
+  }
+
+  //Single blog API call
+  getSingleBlog(id: string): Observable<Blogs[]> {
+    let api = `${this.endpoint}/blog?id=${id}`;
     return this.http.get<Blogs[]>(api, { headers: this.headers });
   }
 

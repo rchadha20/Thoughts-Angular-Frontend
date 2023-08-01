@@ -1,0 +1,38 @@
+<article class="p-6 bg-white rounded-lg border border-gray-200 shadow-sm">
+  <div
+    class="d-flex justify-content-between align-items-center mb-5 text-muted"
+  >
+    <span
+      class="badge bg-primary font-weight-bold d-inline-flex align-items-center rounded w-full mt-2 mx-4"
+    >
+      {{ blog.category }}
+    </span>
+
+    <span class="mt-2 mx-4">{{ formateDate(blog.creationDate) }}</span>
+  </div>
+  <h2 class="mb-2 h4 font-weight-bold text-dark mx-4">
+    {{ blog.title }}
+  </h2>
+  <p class="mb-2 clamp-3-lines mx-4">
+    {{ blog.content }}
+  </p>
+
+  <div class="d-flex justify-content-between align-items-center my-4 mx-4">
+    <div class="d-flex align-items-center">
+      <img
+        class="img-style align-self-center"
+        src="assets/man.png"
+        alt="logo"
+      />
+      <span class="font-weight-medium text-dark mb-2">
+        {{ blog.author }}
+      </span>
+    </div>
+    <a
+      class="text-decoration-none font-weight-bold text-primary"
+      [routerLink]="['/dashboard', 'single-blog-post', blog._id]"
+      >Read more</a
+    >
+  </div>
+</article>
+<div class="mt-4"></div>

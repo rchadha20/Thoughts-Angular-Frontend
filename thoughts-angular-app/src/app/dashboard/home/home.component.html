@@ -1,15 +1,16 @@
-<main>
-<div class="bg-gray-50 text-white">
-  <div class="container-fluid mt-5 pt-5 px-4">
-    <div class="row mt-5 pt-5 px-4 align-items-center">
-      <div class="col-12">
-        <div class="text-center">
-          <h1 class="display-3 text-black fw-bold mb-4">
-           Home Component
-          </h1>
+<div class="bg-gray-100 dark:bg-gray-900">
+  <div class="container mx-auto px-4 py-8 pt-8 min-h-screen">
+    <div class="flex flex-wrap">
+      <div class="w-full md:w-4/5 px-4 mb-8 md:mb-0 order-last">
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4">
+          <h2 class="text-2xl font-bold mb-4 dark:text-white">Thoughts</h2>
+          <div>
+            <div *ngFor="let blog of blogs">
+              <app-blogs [blog]="blog" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-</main>
