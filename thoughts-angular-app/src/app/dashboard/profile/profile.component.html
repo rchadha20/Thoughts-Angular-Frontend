@@ -1,15 +1,84 @@
-<main>
-  <div class="bg-gray-50 text-white">
-    <div class="container-fluid mt-5 pt-5 px-4">
-      <div class="row mt-5 pt-5 px-4 align-items-center">
-        <div class="col-12">
-          <div class="text-center">
-            <h1 class="display-3 text-black fw-bold mb-4">
-             Profile Component
-            </h1>
-          </div>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="h-full bg-gray-50">
+    <section class="bg-black dark:bg-gray-900 text-white">
+      <div class="py-4 px-4 mx-auto max-w-2xl">
+        <h2 class="mb-4 text-3xl font-weight-bold text-white">PROFILE</h2>
+        <div
+          *ngIf="isProfileSaved"
+          class="alert alert-success mt-4"
+          role="alert"
+        >
+          Profile Saved Successfully
         </div>
+        <form class="form-group" (ngSubmit)="onSubmit()">
+          <div class="row g-4">
+            <div class="col-sm-6">
+              <label class="form-label">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="First Name"
+                [(ngModel)]="profile.firstName"
+                name="firstName"
+              />
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Last name"
+                [(ngModel)]="profile.lastName"
+                name="lastName"
+              />
+            </div>
+            <div class="col-12">
+              <label class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email"
+                [(ngModel)]="profile.email"
+                name="email"
+                disabled
+              />
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label">Date of Birth</label>
+              <input
+                type="date"
+                class="form-control"
+                placeholder="Date of Birth"
+                [(ngModel)]="formatDate"
+                name="dob"
+              />
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm-4">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            <div class="col-sm-4">
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-block"
+                (click)="onDelete()"
+              >
+                Delete
+              </button>
+            </div>
+            <div class="col-sm-4">
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-block"
+                [routerLink]="['/dashboard', 'home']"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-    </div>
+    </section>
   </div>
-  </main>
+</div>

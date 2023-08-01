@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import { Blogs } from './blogs';
+import { Profile } from './profile';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
@@ -23,9 +24,9 @@ export class AuthService {
       .post<any>(`${this.endpoint}/signin`, user)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
-        this.getUserProfile(res._id).subscribe((res) => {
+        this.getUserProfile().subscribe((res) => {
           this.currentUser = res;
-          console.log(this.currentUser);
+          //console.log(this.currentUser);
           this.router.navigate(['dashboard']);
         });
       });
@@ -40,9 +41,9 @@ export class AuthService {
       .post<any>(`${this.endpoint}/signup`, body)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
-        this.getUserProfile(res._id).subscribe((res) => {
+        this.getUserProfile().subscribe((res) => {
           this.currentUser = res;
-          console.log(this.currentUser);
+          //console.log(this.currentUser);
           this.router.navigate(['dashboard/profile']);
         });
       });
@@ -61,14 +62,29 @@ export class AuthService {
     }
   }
   // User profile
-  getUserProfile(id: any): Observable<any> {
+  getUserProfile(): Observable<Profile> {
     let api = `${this.endpoint}/get-profile-info`;
-    return this.http.get(api, { headers: this.headers }).pipe(
-      map((res) => {
-        return res || {};
-      }),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<Profile>(api, { headers: this.headers })
+      .pipe(catchError(this.handleError));
+  }
+
+  //Update Profile
+  updateUserProfile(profileObject: any): Observable<Profile> {
+    let api = `${this.endpoint}/update-profile-info`;
+    let body = {
+      first: profileObject.firstName,
+      last: profileObject.lastName,
+      dob: profileObject.dob,
+      email: profileObject.email,
+    };
+    return this.http.put<any>(api, body, { headers: this.headers });
+  }
+
+  //Delete Profile
+  deleteUserProfile(): Observable<any> {
+    let api = `${this.endpoint}/delete-profile-info`;
+    return this.http.delete<any>(api, { headers: this.headers });
   }
 
   //All BLogs API call

@@ -7,10 +7,10 @@ import { DashboardComponent } from './dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WriteComponent } from './write/write.component';
 import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BlogsComponent } from './blogs/blogs.component';
 import { SingleBlogPostComponent } from './single-blog-post/single-blog-post.component';
-
 
 @NgModule({
   declarations: [
@@ -19,12 +19,13 @@ import { SingleBlogPostComponent } from './single-blog-post/single-blog-post.com
     WriteComponent,
     HomeComponent,
     BlogsComponent,
-    SingleBlogPostComponent
+    SingleBlogPostComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}
