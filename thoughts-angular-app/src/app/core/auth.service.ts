@@ -99,6 +99,17 @@ export class AuthService {
     return this.http.get<Blogs[]>(api, { headers: this.headers });
   }
 
+  //Post blog API call
+  postBlog(blogObject: any): Observable<Blogs> {
+    let api = `${this.endpoint}/add-blog`;
+    let body = {
+      title: blogObject.title,
+      content: blogObject.content,
+      category: blogObject.category,
+    };
+    return this.http.post<Blogs>(api, body, { headers: this.headers });
+  }
+
   // Error
   handleError(error: HttpErrorResponse) {
     let msg = '';

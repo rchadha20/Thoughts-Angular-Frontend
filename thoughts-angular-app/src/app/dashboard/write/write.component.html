@@ -1,15 +1,47 @@
-<main>
-  <div class="bg-gray-50 text-white">
-    <div class="container-fluid mt-5 pt-5 px-4">
-      <div class="row mt-5 pt-5 px-4 align-items-center">
-        <div class="col-12">
-          <div class="text-center">
-            <h1 class="display-3 text-black fw-bold mb-4">
-             Write Component
-            </h1>
-          </div>
+<div class="container flex justify-content-center align-items-center mt-4">
+  <div class="py-8 px-4 mx-auto max-w-2xl lg:py-10">
+    <h2 class="mb-4 text-white text-xl font-bold text-gray-900 dark:text-white">
+      Unleash your blog's potential and make your voice heard.
+    </h2>
+    <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+      <div class="row g-4">
+        <div class="col-sm-12 col-md-6">
+          <input
+            type="text"
+            name="title"
+            class="form-control bg-gray-50 border border-gray-300 text-sm text-dark rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Enter Title"
+            formControlName="title"
+          />
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+          <select
+            name="category"
+            class="form-select bg-gray-50 border border-gray-300 text-sm text-dark rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            formControlName="category"
+          >
+            <option value="">Select Category</option>
+            <option value="sport">Sport</option>
+            <option value="food">Food</option>
+            <option value="education">Education</option>
+            <option value="science">Science</option>
+            <option value="tech">Tech</option>
+            <option value="travel">Travel</option>
+            <option value="entertainment">Entertainment</option>
+          </select>
+        </div>
+
+        <div class="col-sm-12">
+          <textarea
+            name="content"
+            class="form-control p-2.5 text-sm text-dark rounded-lg border border-gray-300 custom-textarea-style"
+            placeholder="Enter Content"
+            formControlName="content"
+          ></textarea>
         </div>
       </div>
-    </div>
+      <button type="submit" class="btn btn-primary btn-block mt-4">Post</button>
+    </form>
   </div>
-  </main>
+</div>
