@@ -23,10 +23,11 @@ export class ProfileComponent implements OnInit {
   constructor(private service: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.service.getUserProfile().subscribe((res) => {
-      this.profile = res;
-      this.formatDate = new Date(res.dob).toISOString().split('T')[0];
-    });
+    const userProfileJSON = localStorage.getItem('userProfile');
+    if (userProfileJSON) {
+      this.profile = JSON.parse(userProfileJSON);
+      this.formatDate = new Date(this.profile.dob).toISOString().split('T')[0];
+    }
   }
 
   onSubmit() {
@@ -41,6 +42,9 @@ export class ProfileComponent implements OnInit {
       this.profile = res;
       this.isProfileSaved = true;
     });
+
+    const updatedUserProfile = JSON.stringify(this.profile);
+    localStorage.setItem('userProfile', updatedUserProfile);
   }
 
   onDelete() {
