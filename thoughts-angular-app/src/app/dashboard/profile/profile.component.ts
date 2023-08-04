@@ -27,6 +27,8 @@ export class ProfileComponent implements OnInit {
     if (userProfileJSON) {
       this.profile = JSON.parse(userProfileJSON);
       this.formatDate = new Date(this.profile.dob).toISOString().split('T')[0];
+      console.log(this.formatDate);
+      console.log(this.profile);
     }
   }
 
@@ -41,10 +43,9 @@ export class ProfileComponent implements OnInit {
     this.service.updateUserProfile(profileObject).subscribe((res) => {
       this.profile = res;
       this.isProfileSaved = true;
+      const updatedUserProfile = JSON.stringify(this.profile);
+      localStorage.setItem('userProfile', updatedUserProfile);
     });
-
-    const updatedUserProfile = JSON.stringify(this.profile);
-    localStorage.setItem('userProfile', updatedUserProfile);
   }
 
   onDelete() {

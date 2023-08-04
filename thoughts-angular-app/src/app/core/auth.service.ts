@@ -44,7 +44,9 @@ export class AuthService {
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
         this.getUserProfile().subscribe((res) => {
+          const userProfile = JSON.stringify(res);
           this.currentUser = res;
+          localStorage.setItem('userProfile', userProfile);
           //console.log(this.currentUser);
           this.router.navigate(['dashboard/profile']);
         });
