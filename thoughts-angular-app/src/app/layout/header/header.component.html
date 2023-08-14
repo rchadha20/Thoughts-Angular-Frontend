@@ -20,28 +20,28 @@
       <ul
         class="nav col-12 col-lg-auto mx-lg-auto mb-2 justify-content-center mb-md-0"
       >
-        <li>
+        <li class="m-2">
           <a
-            [routerLink]="['/dashboard/home']"
-            routerLinkActive="router-link-active"
+            routerLink="/dashboard/home"
+            routerLinkActive="active-link"
             *ngIf="this.authService.isLoggedIn"
-            class="nav-link px-2 text-secondary"
+            class="nav-link px-2 text-white"
             >Home</a
           >
         </li>
-        <li>
+        <li class="m-2">
           <a
-            [routerLink]="['/dashboard/profile']"
-            routerLinkActive="router-link-active"
+            routerLink="/dashboard/profile"
+            routerLinkActive="active-link"
             *ngIf="this.authService.isLoggedIn"
             class="nav-link px-2 text-white"
             >Profile</a
           >
         </li>
-        <li>
+        <li class="m-2">
           <a
-            [routerLink]="['/dashboard/write']"
-            routerLinkActive="router-link-active"
+            routerLink="/dashboard/write"
+            routerLinkActive="active-link"
             *ngIf="this.authService.isLoggedIn"
             class="nav-link px-2 text-white"
             >Write</a

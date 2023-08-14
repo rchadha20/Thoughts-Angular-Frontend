@@ -1,46 +1,40 @@
 <div class="container mt-header">
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <!-- Sticky Categories Sidebox -->
-      <div class="sticky-top" style="top: 4.5rem;">
-        <div class="bg-white shadow-lg rounded-lg p-4">
-          <h2 class="text-xl font-bold mb-4">Categories</h2>
-          <!-- Add your categories list here -->
-          <!-- <ul class="list-unstyled">
-            <div *ngFor="let blog of blogs">
-              <li class="mb-2">{{blog.category}}</li>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="sticky-top" style="top: 4.5rem">
+          <div class="bg-white shadow-lg rounded p-4 mt-2">
+            <h2 class="text-xl font-bold mb-4">Categories</h2>
+            <div class="row">
+              <div class="col-md-6" *ngFor="let category of categories">
+                <button
+                  class="btn btn-outline-primary mb-2"
+                  [ngClass]="{
+                  'btn-primary': activeCategory === category,
+                  'text-white': activeCategory === category,
+                  'btn-light': activeCategory !== category,
+                }"
+                  (click)="handleCategoryChange(category)"
+                  [attr.data-active]="activeCategory === category ? true : null"
+                  type="button"
+                >
+                  {{ category }}
+                </button>
+              </div>
             </div>
-          </ul> -->
-          <ng-container *ngFor="let category of uniqueCategories">
-            <button
-              class="px-4 py-2 rounded-lg"
-              [ngClass]="{
-                'dark:text-white': true,
-                'text-white': activeCategory === category,
-                'bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2': activeCategory === category
-              }"
-              (click)="handleCategoryChange(category)"
-              [attr.data-active]="activeCategory === category ? true : null"
-              type="button"
-            >
-              {{ category }}
-            </button>
-          </ng-container>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-9">
-      <div class="bg-white shadow-lg rounded-lg p-4">
-        <h2 class="text-2xl font-bold mb-4">Thoughts</h2>
-        <div>
-          <div *ngFor="let blog of blogs">
-            <app-blogs [blog]="blog"></app-blogs>
+      <div class="col-md-9">
+        <div class="bg-white shadow-lg rounded-lg p-4">
+          <h2 class="text-2xl font-bold mb-4">Thoughts</h2>
+          <div>
+            <div *ngFor="let blog of filteredBlogs">
+              <app-blogs [blog]="blog"></app-blogs>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-
