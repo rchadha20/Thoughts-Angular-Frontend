@@ -1,42 +1,43 @@
-<div *ngIf="blog.length > 0">
-  <main
-    class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 dark:text-white min-h-screen"
-  >
-    <div class="flex justify-between px-4">
-      <article class="mx-auto w-full max-w-2xl">
-        <header class="mb-4 lg:mb-6">
-          <address class="flex items-center mb-6 not-italic">
-            <div
-              class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"
-            >
-              <img class="w-10 mr-5 img-style" src="assets/woman.png" alt="" />
-              <div>
-                {{ blog[0].author }}
-                <p class="">
-                  <span
-                    class="bg-primary-100 text-primary-800 text-xs font-medium items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800"
-                  >
-                    {{ blog[0].category }}
-                  </span>
-                </p>
-                <p
-                  class="text-base font-light text-gray-500 dark:text-gray-400"
-                ></p>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div *ngIf="blog.length > 0; else noBlogPosts">
+  <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 dark:bg-gray-900 dark:text-white min-h-screen" style="background-color: #111827;">
+    <div class="container justify-content-between px-4">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <article class="card shadow mb-4">
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-4">
+                <!-- Profile picture, author, and category on the left -->
+                <div class="text-sm text-gray-900 dark:text-white">
+                  <img class="w-8 h-8 mr-3 rounded-circle img-style" src="assets/man.png" alt="" />
+                  <div>
+                    <h5 class="mb-0">{{ blog[0].author }}</h5>
+                    <p>
+                      <span class="badge badge-primary">{{ blog[0].category }}</span>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Date on the right -->
+                <div class="text-sm text-gray-900 dark:text-white">
+                  <p>{{ formatDate(blog[0].creationDate) }}</p>
+                </div>
               </div>
+              <h1 class="card-title mb-4 text-3xl font-extrabold text-gray-900">
+                {{ blog[0].title }}
+              </h1>
+              <p class="lead">{{ blog[0].content }}</p>
             </div>
-          </address>
-          <h1
-            class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
-          >
-            {{ blog[0].title }}
-          </h1>
-        </header>
-        <p class="lead">{{ blog[0].content }}</p>
-      </article>
+          </article>
+        </div>
+      </div>
     </div>
   </main>
 </div>
 
-<div *ngIf="blog.length === 0">
-  <p class="text-white">No blog posts found.</p>
-</div>
+<ng-template #noBlogPosts>
+  <div class="container">
+    <p class="text-white">No blog posts found.</p>
+  </div>
+</ng-template>

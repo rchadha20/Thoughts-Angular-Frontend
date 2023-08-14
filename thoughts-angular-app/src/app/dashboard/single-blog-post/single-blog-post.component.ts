@@ -23,4 +23,16 @@ export class SingleBlogPostComponent implements OnInit {
       console.log(this.blog);
     });
   }
+
+  formatDate(creationDate: Date) {
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit',
+    };
+
+    let date = new Date(creationDate);
+
+    return date.toLocaleDateString('en-US', options);
+  }
 }

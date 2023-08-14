@@ -16,4 +16,15 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this._service.getBlogs().subscribe((res) => (this.blogs = res));
   }
+
+  activeCategory: string | null = null;
+
+  get uniqueCategories(): string[] {
+    return [...new Set(this.blogs.map(blog => blog.category.toLowerCase()))];
+  }
+
+  handleCategoryChange(category: string): void {
+    this.activeCategory = category;
+    // Add your logic when a category button is clicked
+  }
 }
